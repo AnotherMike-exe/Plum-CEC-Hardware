@@ -1,0 +1,48 @@
+name: Review
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  kicad-checks:
+    name: KiCad ERC and DRC
+    runs-on: ubuntu-latest
+    container: kicad/kicad:10.0
+    steps:
+      - uses: actions/checkout@v4
+      # Skips until KiCad/ holds a project (milestone M8).
+      - name: ERC
+        run: |
+          shopt -s nullglob
+          for sch in KiCad/*.kicad_sch; do
+            kicad-cli sch erc --exit-code-violations "$sch"
+          done
+      - name: DRC
+        run: |
+          shopt -s nullglob
+          for pcb in KiCad/*.kicad_pcb; do
+            kicad-cli pcb drc --exit-code-violations "$pcb"
+          done
+
+  claude-review:
+    name: Automated review
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    # The secrets context is not allowed in a step `if`, so expose it through env.
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: anthropics/claude-code-action@v1
+        if: ${{ env.ANTHROPIC_API_KEY != '' }}
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: "Review this PR for correctness, electrical safety and adherence to the project's conventions in docs/CLAUDE.md."
