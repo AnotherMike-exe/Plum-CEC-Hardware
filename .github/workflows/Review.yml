@@ -12,7 +12,10 @@ jobs:
   kicad-checks:
     name: KiCad ERC and DRC
     runs-on: ubuntu-latest
-    container: kicad/kicad:10.0
+    container:
+      image: kicad/kicad:10.0
+      # The image runs as a user that cannot write the runner's file commands.
+      options: --user root
     steps:
       - uses: actions/checkout@v4
       # Skips until KiCad/ holds a project (milestone M8).
