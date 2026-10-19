@@ -10,6 +10,8 @@ Anything a user would ask for goes to GitHub instead:
 
 ## Now
 
+The M0 to M6 plan is in Plum-CEC-Firmware `docs/Plans/ProofOfConcept.md`.
+
 - [ ] M0: measure the HDMI breakout (pins 13 and 17 pass through)
 - [ ] M0: make sure GPIO10 is on the DevKitC-02 header
 
