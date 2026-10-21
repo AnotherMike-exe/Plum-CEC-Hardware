@@ -71,6 +71,64 @@ micro-USB ──► Mac (power, flashing, UART0 console through the bridge)
 Leave VBUS of the USB breakout disconnected. The micro-USB port powers the board. Make
 sure on the bench that the C3 enumerates without VBUS.
 
+## Setup procedure
+
+Do the sections in order. The total time is about 60 to 90 minutes. You need a
+multimeter in continuity mode, jumper wires and tape.
+
+### A. Measure the HDMI breakout (5 minutes)
+
+1. Disconnect the breakout from the TV and the Host.
+2. Measure from header `CEC` to header `DDC_GND`. The meter must not beep.
+3. Measure from header `GND` to header `DDC_GND`. Write down the result.
+4. Put tape on the header pins `HP_DET` and `+5V`.
+
+### B. Check the devkit header (2 minutes)
+
+1. Find GPIO4, GPIO10, GPIO18, GPIO19 and GND on the devkit header labels.
+2. If one of them is not on the header, stop. Report the missing pin.
+
+### C. Wire the bench (20 minutes)
+
+CAUTION: Disconnect the devkit micro-USB cable before you wire. Disconnect the HDMI
+cables from the TV and the Host.
+
+1. Connect GPIO10 to header `CEC`.
+2. Connect a devkit GND pin to header `DDC_GND`.
+3. Connect GPIO4 to GPIO10 with a short jumper.
+4. Connect USB breakout D− to GPIO18.
+5. Connect USB breakout D+ to GPIO19.
+6. Connect USB breakout GND to a devkit GND pin.
+7. Make sure that the USB breakout VBUS is not connected.
+8. Make sure that the tape covers `HP_DET` and `+5V`.
+9. Connect the Host HDMI cable to breakout J2 (female).
+10. Put breakout J1 (male) into TV HDMI 1.
+11. Connect the USB breakout to a Host USB port.
+12. Connect the devkit micro-USB to the Mac.
+13. Take a photo of the bench. Save it in `Breadboard/BenchWired.jpg`.
+
+### D. Set the TV (10 minutes)
+
+Go to Settings → External inputs → BRAVIA Sync settings.
+
+1. Set "BRAVIA Sync control" to on.
+2. Set "Wake-up on signal" to off, if the menu has it.
+3. Set "Idle TV standby" to off. On this model, it can be under Settings → Power.
+4. Write down the name and value of every item on the BRAVIA Sync settings screen.
+
+### E. Set the Host BIOS (15 minutes)
+
+1. Restart the Host and open the BIOS setup.
+2. Set "ErP" (or "EuP") to disabled.
+3. Set "Wake from S3 by USB" (or "USB power in S3") to enabled.
+4. Save the settings, and let CachyOS start.
+5. Optional: connect a network cable to the Host for Wake-on-LAN.
+
+### F. Report
+
+Send the results of A and B, the list from D, and "done" for C and E. The next
+session then checks the wiring from the Host and the Adapter (plan steps 4 and 5).
+
 ## Recovery
 
 If the native USB device does not show, hold GPIO9 low and push reset. The chip then
@@ -78,4 +136,4 @@ starts in download mode.
 
 ## Captures
 
-Put logic analyzer captures and bench photos in `Breadboard/`.
+Put bench photos and timing captures in `Breadboard/`.
