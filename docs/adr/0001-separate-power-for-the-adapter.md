@@ -1,3 +1,7 @@
+---
+status: superseded by ADR 0003
+---
+
 # Separate power for the Adapter
 
 The Adapter takes its power from a separate 5 V USB supply, not from the Host. The

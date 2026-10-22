@@ -22,9 +22,9 @@ The M0 to M6 plan is in Plum-CEC-Firmware `docs/Plans/ProofOfConcept.md`.
 
 ## Someday
 
-- [ ] M8: decide on a PCB (HDMI inline, power OR-ing, CEC line protection)
+- [ ] M8: draw the schematic from ADR 0003 and ADR 0004. Choose the HDMI connectors first.
 
 ## Scaffold gaps
 
 - [ ] .github/workflows/Review.yml — ERC/DRC job skips until `KiCad/` holds a project
-- [ ] docs/ARCHITECTURE.md — PCB power and protection design is not started (M8)
+- [ ] docs/ARCHITECTURE.md — PCB power tree, ESD protection and part numbers are not chosen (M8)
