@@ -48,7 +48,8 @@ Net names use `UPPER_SNAKE_CASE` (for example `CEC`, `USB_DP`). Constants are
 **Project-specific rules**:
 - Change KiCad files through Konnect MCP only. Load the `konnect` and `kicad-workflow`
   skills before KiCad work.
-- Do not connect HDMI pin 18 (+5 V) or pin 19 (HPD).
+- Do not tap HDMI pin 18 (+5 V) or pin 19 (HPD). On the PCB they pass straight through.
+  On the bench, leave them unconnected.
 - Keep GPIO18/19 for USB. Do not use GPIO2, 8 or 9 for CEC.
 - A pin change here also changes the firmware. Update both repos.
 
@@ -86,6 +87,9 @@ fresh session can execute cold.
 ## Gotchas
 
 - No PCB work starts before M8. The bench results (M1 to M7) decide the PCB needs.
+- The PCB design is set in `docs/adr/0003` (power) and `docs/adr/0004` (passive HDMI 2.1
+  passthrough, stackup, taps, layout). The open bench inputs are in the firmware plan,
+  step 14.
 
 ## Where the rules live
 

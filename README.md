@@ -34,7 +34,8 @@ Pin assignments and the parts list are in
 
 Known limitations:
 
-- Do not connect HDMI pin 18 (+5 V) or pin 19 (HPD). Do not power the board from HDMI.
+- Do not tap HDMI pin 18 (+5 V) or pin 19 (HPD). On the bench, leave them unconnected.
+  Do not power the board from HDMI.
 - An unpowered board can pull the CEC line low. Keep the board powered while it is
   connected to the TV.
 - USB power can stop while the PC sleeps. Network control during PC sleep needs a
