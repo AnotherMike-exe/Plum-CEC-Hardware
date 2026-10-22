@@ -21,6 +21,7 @@ kicad-cli pcb export gerbers -o KiCad/Fabrication/ KiCad/*.kicad_pcb
 |---|---|---|
 | CEC data | GPIO10 | 13 |
 | Ground | GND | 17 |
+| Timing probe (jumper to GPIO10, RMT RX) | GPIO4 | — |
 | Native USB D− | GPIO18 | — |
 | Native USB D+ | GPIO19 | — |
 | Status LED | GPIO8 | — |
