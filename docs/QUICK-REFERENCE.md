@@ -27,7 +27,7 @@ kicad-cli pcb export gerbers -o KiCad/Fabrication/ KiCad/*.kicad_pcb
 | BOOT / recovery | GPIO9 | — |
 | **Do not connect** | — | 18 (+5 V), 19 (HPD) |
 
-Full pin notes: [BenchWiring.md](BenchWiring.md)
+Full pin notes: [BenchWiring.md](BenchWiring.md). TV menu values: [TvSettings.md](TvSettings.md). Host sleep and wake: [HostSetup.md](HostSetup.md).
 
 ## CEC timing
 

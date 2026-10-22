@@ -13,12 +13,13 @@ Anything a user would ask for goes to GitHub instead:
 The M0 to M6 plan is in Plum-CEC-Firmware `docs/Plans/ProofOfConcept.md`.
 
 - [ ] M0: measure the HDMI breakout (pins 13 and 17 pass through)
-- [ ] M0: make sure GPIO10 is on the DevKitC-02 header
+- [x] M0: make sure GPIO10 is on the DevKitC-02 header
+- [ ] M0: add the bench photo as `Breadboard/BenchWired.jpg`
 
 ## Next
 
-- [ ] Record the TV make, model and HDMI port number (physical address `N.0.0.0`)
-- [ ] Make sure the C3 enumerates on native USB with VBUS disconnected
+- [x] Record the TV make, model and HDMI port number (see [TvSettings.md](TvSettings.md))
+- [x] Make sure the C3 enumerates on native USB with VBUS disconnected (see [HostSetup.md](HostSetup.md))
 
 ## Someday
 
