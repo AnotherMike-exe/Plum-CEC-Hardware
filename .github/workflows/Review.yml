@@ -21,7 +21,7 @@ jobs:
         # The container default is sh, and the steps use shopt.
         shell: bash
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       # Skips until KiCad/ holds a project (milestone M8).
       - name: ERC
         run: |
@@ -47,7 +47,7 @@ jobs:
     env:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: anthropics/claude-code-action@v1
         if: ${{ env.ANTHROPIC_API_KEY != '' }}
         with:
